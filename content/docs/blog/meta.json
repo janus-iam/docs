@@ -1,0 +1,9 @@
+{
+  "title": "Blog",
+  "pages": [
+    "totp-apps",
+    "stay-invisible-after-data-leak-consumer",
+    "stay-invisible-after-data-leak-technical",
+    "security-signature-and-passkeys"
+  ]
+}
