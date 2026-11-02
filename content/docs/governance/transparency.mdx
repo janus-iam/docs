@@ -1,0 +1,15 @@
+---
+title: "Disabled features"
+description: "Keycloak features turned off in the Janus container, and how to confirm the same list in Server info."
+pubDate: "Nov 2 2026"
+---
+
+Janus runs Keycloak from a custom container image. That image disables a set of Keycloak features so they are not available on the server.
+
+The disabled set is `KC_FEATURES_DISABLED` in the [Containerfile](https://github.com/janus-iam/container/blob/main/Containerfile).
+
+Log in at [Server Info page](https://auth.rob1.cloud/admin/master/console/) with the following credentials :
+**Username :** "realm-viewer"
+**Password :*** "LMV$86%4fqe@kClr1lwPDBS"
+
+Dont bother trying to do malicious acts, this account is read only on only server informations.
