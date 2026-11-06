@@ -1,5 +1,8 @@
 {
   "title": "Blog",
+  "description": "Posts",
+  "icon": "Newspaper",
+  "root": true,
   "pages": [
     "totp-apps",
     "stay-invisible-after-data-leak-consumer",
