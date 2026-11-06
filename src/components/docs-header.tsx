@@ -6,11 +6,64 @@ import { SidebarTrigger } from 'fumadocs-ui/components/sidebar/base';
 import { buttonVariants } from 'fumadocs-ui/components/ui/button';
 import { useSpaciousLayout } from 'fumadocs-ui/layouts/spacious';
 import { HeaderActions } from 'fumadocs-ui/layouts/spacious/slots/actions';
-import { LinkItem, type LinkItemType } from 'fumadocs-ui/layouts/shared';
+import { NavigationMenu } from '@base-ui/react/navigation-menu';
+import Link from 'fumadocs-core/link';
+import {
+  NavbarMenu,
+  NavbarMenuContent,
+  NavbarMenuLink,
+  NavbarMenuTrigger,
+} from 'fumadocs-ui/layouts/home/navbar';
+import { LinkItem, type LinkItemType, type MenuItemType } from 'fumadocs-ui/layouts/shared';
 import { cn } from '@/lib/cn';
 
 function navEntries(items: LinkItemType[]) {
-  return items.filter((item) => item.type !== 'icon' && item.type !== 'menu');
+  return items.filter((item) => item.type !== 'icon');
+}
+
+function DocsNavMenu({ item }: { item: MenuItemType }) {
+  return (
+    <NavigationMenu.Root>
+      <NavigationMenu.List className="flex">
+        <NavbarMenu>
+          <NavbarMenuTrigger>
+            {item.url ? <Link href={item.url}>{item.text}</Link> : item.text}
+          </NavbarMenuTrigger>
+          <NavbarMenuContent className="w-[min(42rem,calc(100vw-2rem))] lg:grid-cols-2">
+            {item.items.map((child, index) =>
+              child.type === 'custom' ? (
+                child.children
+              ) : (
+                <NavbarMenuLink key={child.url ?? index} href={child.url}>
+                  {child.icon ? (
+                    <span className="w-fit rounded-md border bg-fd-muted p-1 text-fd-muted-foreground [&_svg]:size-4">
+                      {child.icon}
+                    </span>
+                  ) : null}
+                  <p className="text-base font-medium">{child.text}</p>
+                  {child.description ? (
+                    <p className="text-sm text-fd-muted-foreground">{child.description}</p>
+                  ) : null}
+                </NavbarMenuLink>
+              ),
+            )}
+          </NavbarMenuContent>
+        </NavbarMenu>
+      </NavigationMenu.List>
+      <NavigationMenu.Portal>
+        <NavigationMenu.Positioner
+          align="start"
+          side="bottom"
+          sideOffset={8}
+          className="z-50"
+        >
+          <NavigationMenu.Popup className="w-[min(42rem,calc(100vw-2rem))] rounded-xl border bg-fd-popover/80 text-fd-popover-foreground shadow-lg backdrop-blur-md">
+            <NavigationMenu.Viewport />
+          </NavigationMenu.Popup>
+        </NavigationMenu.Positioner>
+      </NavigationMenu.Portal>
+    </NavigationMenu.Root>
+  );
 }
 
 const linkClass =
@@ -22,7 +75,9 @@ function SectionLinks({ className }: { className?: string }) {
   return (
     <nav className={cn('flex items-center gap-4', className)}>
       {navEntries(navItems).map((item, index) =>
-        item.type === 'custom' ? (
+        item.type === 'menu' ? (
+          <DocsNavMenu key={item.url ?? index} item={item} />
+        ) : item.type === 'custom' ? (
           <span key={index} className="inline-flex items-center">
             {item.children}
           </span>

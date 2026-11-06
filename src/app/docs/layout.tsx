@@ -7,7 +7,6 @@ import { DocsHeaderActions, DocsMobileHeader } from '@/components/docs-header';
 export default function Layout({ children }: LayoutProps<'/docs'>) {
   const base = baseOptions();
   const links = (base.links ?? []).flatMap((link): LinkItemType[] => {
-    if (link.type === 'menu') return [];
     if (link.type === 'icon') return [link];
     return [{ ...link, on: 'nav' as const }];
   });

@@ -1,17 +1,19 @@
+import { Blocks, Container, KeyRound, Radio, ScanFace } from 'lucide-react';
 import type { BaseLayoutProps, LinkItemType } from 'fumadocs-ui/layouts/shared';
-import { DocumentationMenu } from '@/components/documentation-menu';
 import { docSections } from './doc-sections';
 import { appName, gitConfig } from './shared';
 
+const sectionIcons = {
+  Keycloak: <KeyRound />,
+  Identicon: <ScanFace />,
+  CaaS: <Blocks />,
+  Container: <Container />,
+  Events: <Radio />,
+} as const;
+
 export const sectionLinks: LinkItemType[] = [
   {
-    type: 'custom',
-    on: 'nav',
-    children: <DocumentationMenu />,
-  },
-  {
     type: 'menu',
-    on: 'menu',
     text: 'Documentation',
     url: '/docs',
     active: 'nested-url',
@@ -19,6 +21,7 @@ export const sectionLinks: LinkItemType[] = [
       text: section.title,
       description: section.description,
       url: section.url,
+      icon: sectionIcons[section.title],
     })),
   },
   {
