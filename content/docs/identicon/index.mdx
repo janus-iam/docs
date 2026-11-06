@@ -1,0 +1,49 @@
+---
+title: Identicon
+description: Deterministic SVG identicons from the identicons repository — a Rust engine, WebAssembly bindings, and an HTTP API.
+---
+
+[janus-iam/identicons](https://github.com/janus-iam/identicons) renders a deterministic SVG from a string. Three layers share one renderer:
+
+- **identicon-core** — Rust SVG engine
+- **identicon-wasm** — browser bindings, published as `@janus-iam/identicon-wasm`
+- **identicon-api** — Axum HTTP service
+
+## HTTP API
+
+`GET /v1/{input}` returns `image/svg+xml`. Query parameters: `size`, `theme`, `engine`, `background`, `animated`.
+
+`GET /` is an HTML gallery of engines and themes. `GET /api-docs/openapi.json` and `GET /swagger-ui/` expose the OpenAPI schema.
+
+Unversioned checks:
+
+- `GET /health` — `{"status":"ok"}`
+- `GET /metrics` — Prometheus text
+
+Responses use `Cache-Control: public, immutable, max-age=31536000`.
+
+The listen port is `PORT` (default `3000`).
+
+## Input
+
+Non-empty, at most 256 characters. ASCII letters, digits, and `-_.@`.
+
+## Engines
+
+`engine` selects the shape. Palettes stay the same across engines. When `engine` is omitted, the HTTP API and the WASM package use `ribbon`. `RenderOptions::default()` in the Rust library stays `blob`.
+
+| Engine | Figure |
+| --- | --- |
+| `blob` | Overlapping gradient blobs |
+| `crest` | Heraldic escutcheon: contour, partition, charge |
+| `voronoi` | Symmetric stained-glass tessellation |
+| `kaleido` | N-fold mandala |
+| `ribbon` | Interlaced Lissajous ribbons |
+| `constellation` | Linked stars with one principal star |
+| `monogram` | Initials over a generative motif (falls back to `crest` when the input has no letter) |
+
+## Themes
+
+`aurora`, `sunset`, `synthwave`, `nord`, `monochrome`, `oceanic`, `neon`, `pastel`, `ciel`, `terre`, `mer`, `feu`.
+
+Realms `prod` and `dev` also store an admin-managed `picture` URI. That attribute is configured in [CaaS](/docs/caas). This page describes the identicon renderer, not a particular deployment URL.

@@ -1,0 +1,39 @@
+---
+title: CaaS
+description: OpenTofu configuration that provisions Keycloak realms, a read-only master account, and public PKCE clients.
+---
+
+[janus-iam/caas](https://github.com/janus-iam/caas) is the OpenTofu configuration for Janus Keycloak. The provider is [`keycloak/keycloak`](https://registry.terraform.io/providers/keycloak/keycloak/latest) `>= 5.10.0`.
+
+## Realms
+
+| Realm ID | Display name | Purpose |
+| --- | --- | --- |
+| `prod` | canens | App users. Attributes `hash` and `picture` are admin-only to edit. |
+| `dev` | proca | Same shape as prod, for non-production. |
+| `ops` | carna | Management apps via OIDC. |
+
+On **prod** and **dev**:
+
+- `hash` is included by the `profile` scope and on each OIDC client.
+- `picture` is a URI. It is available when the optional `picture` scope is requested.
+
+The names and the isolation rule are also written up in [Janus Realms](/governance/realms).
+
+## Who applies what
+
+| Path | Role | Where it runs |
+| --- | --- | --- |
+| `init/` | Bootstrap: confidential `terraform` client in `master` | Developer machine only. It needs the Keycloak admin password and does not run in GitHub Actions. |
+| `main.tf` and modules | Realms, the read-only master account, OIDC clients | CI only |
+| `modules/realm_master_ro_account` | Read-only `master` user (`view-realm` only) | via day-2 |
+| `modules/oidc_clients` | Public PKCE clients from YAML, with a `hash` claim mapper | via day-2 |
+| `applications/{prod,dev,ops}.yaml` | Per-realm client definitions | via day-2 |
+
+Day-2 is applied by [`.github/workflows/keycloak.yml`](https://github.com/janus-iam/caas/blob/main/.github/workflows/keycloak.yml): a pull request runs `terraform plan`, and a push to `main` applies. Developers change code or YAML and open a PR. They do not apply day-2 from a laptop.
+
+## Clients
+
+Keys in `applications/<realm>.yaml` are `client_id` values. Clients are created as `PUBLIC` with PKCE `S256`, `login_theme = "keycloak"`, and a `hash` protocol mapper.
+
+State files and `*.tfvars` stay off git. The admin password and `init/` state stay on the developer machine.

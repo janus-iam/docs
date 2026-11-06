@@ -1,0 +1,17 @@
+---
+title: Events
+description: Keycloak events from Kete into four NATS JetStream streams, then ClickHouse or a Bun catcher.
+---
+
+[janus-iam/nats-clickhouse-ingestion](https://github.com/janus-iam/nats-clickhouse-ingestion) takes Keycloak events emitted by [Kete](https://github.com/FortuneN/kete) into four NATS JetStream streams. The [container image](/docs/container) installs Kete and enables that listener.
+
+| Stream | Subject | Consumer |
+| --- | --- | --- |
+| `KEYCLOAK_ARCHIVE_EVENTS` | `keycloak.archive.event.>` | Redpanda Connect → ClickHouse `events` |
+| `KEYCLOAK_ARCHIVE_ADMIN_EVENTS` | `keycloak.archive.admin-event.>` | Redpanda Connect → ClickHouse `admin_events` |
+| `KEYCLOAK_ALERTS_EVENTS` | `keycloak.alerts.event.>` | Bun catcher (`bun start`) |
+| `KEYCLOAK_ALERTS_ADMIN_EVENTS` | `keycloak.alerts.admin-event.>` | Bun catcher (`bun start`) |
+
+Kete puts the event kind, written in kebab case, into the subject. Archive subjects look like `keycloak.archive.login.events`. Alert subjects look like `keycloak.alerts.login.events`. Each kind lands in the matching stream.
+
+Local check from that repository: `docker compose up -d`, then `bun install` and `bun start`. `./scripts/trigger-and-verify.sh` is the verify script.

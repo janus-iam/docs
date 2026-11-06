@@ -1,0 +1,39 @@
+---
+title: Container
+description: The Keycloak image Janus runs, including the Kete listener and the features that image turns off.
+---
+
+[janus-iam/container](https://github.com/janus-iam/container) builds the Keycloak image used for Janus.
+
+The [Containerfile](https://github.com/janus-iam/container/blob/main/Containerfile) starts from `quay.io/keycloak/keycloak`. `KEYCLOAK_VERSION` in that file is `26.8.1`. The image sets Postgres (`KC_DB=postgres`) and turns on health, metrics, and tracing.
+
+`KC_FEATURES_DISABLED` is part of the image environment, not only a build argument. A normal container start keeps the same features disabled. The list below is the one in the repository README. How to confirm it from Server info is in [Disabled features](/governance/transparency).
+
+## Extensions
+
+| Component | In this image | Repository |
+| --- | --- | --- |
+| Kete | Installed. The event listener and its metrics are enabled (`KC_SPI_EVENTS_LISTENER__KETE__ENABLED`, `KC_SPI_EVENTS_LISTENER__KETE__METRICS_ENABLED`). | [FortuneN/kete](https://github.com/FortuneN/kete) |
+| TOTP Admin API | Not installed. The jar line in the Containerfile is commented out. | [janus-iam/keycloak-totp-admin-api](https://github.com/janus-iam/keycloak-totp-admin-api) |
+
+Events from Kete are described in [Events](/docs/events).
+
+## Disabled features
+
+| Feature | What the image turns off |
+| --- | --- |
+| `organization` | Multi-tenancy for users, groups, and clients in organizational units. |
+| `workflows` | User-facing approval workflows. |
+| `impersonation` | Acting as another identity. |
+| `authorization` | OAuth 2.0 authorization services (RPT policies and fine-grained client protection). |
+| `scripts` | Server-side JavaScript for custom providers. |
+| `admin-fine-grained-authz` | Fine-grained admin console permissions. |
+| `identity-brokering-api` | Provider discovery and setup APIs. |
+| `twitter-broker` | Twitter as a social identity provider. |
+| `kerberos` | Kerberos browser single sign-on. |
+| `jwt-authorization-grant` | JWT as an authorization grant. |
+| `scim-api` | SCIM 2.0 user and group provisioning. |
+| `ciba` | Client Initiated Backchannel Authentication. |
+| `step-up-authentication-saml` | Step-up authentication for SAML. |
+| `user-event-metrics` | Metrics for user lifecycle events. |
+| `log-mdc` | Mapped diagnostic context on log lines. |

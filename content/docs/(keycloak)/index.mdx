@@ -1,0 +1,24 @@
+---
+title: Keycloak
+description: Janus runs Keycloak. Realms, the container image, and client configuration live in separate repositories.
+---
+
+Janus is built on Keycloak. Each realm is a strictly isolated space: a user exists in **one realm only**.
+
+The three realms are named in [Janus Realms](/governance/realms):
+
+| Realm | Display name | Role |
+| --- | --- | --- |
+| `prod` | canens | Live users and services |
+| `dev` | proca | Development, away from production |
+| `ops` | carna | Operations accounts that run Janus |
+
+## Where the pieces live
+
+<Cards>
+  <Card title="Container" href="/docs/container" description="Keycloak image: Postgres, health, metrics, tracing, and the Kete listener." />
+  <Card title="CaaS" href="/docs/caas" description="OpenTofu for realms, a read-only master account, and public PKCE clients." />
+  <Card title="Events" href="/docs/events" description="Kete events into four NATS JetStream streams." />
+</Cards>
+
+Features turned off in that image are listed on the [container](/docs/container) page and in [Disabled features](/governance/transparency).
