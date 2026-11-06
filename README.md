@@ -24,8 +24,9 @@ In the project, you can see:
 
 | Route                     | Description                                            |
 | ------------------------- | ------------------------------------------------------ |
-| `app/(home)`              | The route group for your landing page and other pages. |
-| `app/docs`                | The documentation layout and pages.                    |
+| `app/(home)`              | Landing page and blog. Top bar links live in `lib/layout.shared.tsx`. |
+| `app/docs`                | Documentation. Sidebar sections are per component.     |
+| `app/governance`          | Governance notes (realms, disabled features, data).    |
 | `app/api/search/route.ts` | The Route Handler for search.                          |
 
 ### Fumadocs MDX

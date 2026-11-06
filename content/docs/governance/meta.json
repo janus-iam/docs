@@ -1,7 +1,0 @@
-{
-  "title": "Governance",
-  "description": "Realms and transparency",
-  "icon": "Scale",
-  "root": true,
-  "pages": ["realms", "transparency"]
-}

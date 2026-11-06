@@ -1,0 +1,7 @@
+{
+  "title": "Events",
+  "description": "Keycloak events through Kete and NATS",
+  "icon": "Radio",
+  "root": true,
+  "pages": ["index"]
+}

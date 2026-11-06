@@ -1,0 +1,7 @@
+{
+  "title": "Container",
+  "description": "The Janus Keycloak image",
+  "icon": "Container",
+  "root": true,
+  "pages": ["index"]
+}

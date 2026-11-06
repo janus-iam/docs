@@ -1,0 +1,7 @@
+{
+  "title": "Identicon",
+  "description": "Deterministic SVG identicons",
+  "icon": "ScanFace",
+  "root": true,
+  "pages": ["index"]
+}

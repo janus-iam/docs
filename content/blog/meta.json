@@ -1,12 +1,9 @@
 {
   "title": "Blog",
-  "description": "Posts",
-  "icon": "Newspaper",
-  "root": true,
   "pages": [
-    "totp-apps",
+    "security-signature-and-passkeys",
     "stay-invisible-after-data-leak-consumer",
     "stay-invisible-after-data-leak-technical",
-    "security-signature-and-passkeys"
+    "totp-apps"
   ]
 }

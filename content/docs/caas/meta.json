@@ -1,0 +1,7 @@
+{
+  "title": "CaaS",
+  "description": "OpenTofu configuration for Keycloak",
+  "icon": "Blocks",
+  "root": true,
+  "pages": ["index"]
+}
