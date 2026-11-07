@@ -1,0 +1,21 @@
+---
+title: Mail proxy
+description: Coming soon. The blog describes email masking as a proxied address per connection, instead of the real inbox.
+---
+
+**Coming soon.** The mail proxy is not available. Nothing here is a service you can turn on. This page only restates the email-masking posts.
+
+## What those posts describe
+
+The posts picture signing in to a site with Janus over OIDC, then turning on email masking for that connection. The site still gets an email-like identifier, but it is a proxied / masked address for that connection, not the real inbox. The consumer post gives the shape `userXZEZEZEZEE@proxy.janus.org` in place of a personal address.
+
+The technical post says the same thing in OIDC terms: Janus issues an identity scoped to that relying party, the site stores the masked email it receives, and it does not receive the canonical inbox address.
+
+## After a leak
+
+If that site is later breached, the stored identifier is the masked email. The posts say attackers then do not have the real inbox, so that value is harder to reuse as a join key across unrelated accounts.
+
+The write-ups are:
+
+- [Stay Invisible After a Data Leak](/blog/stay-invisible-after-data-leak-consumer)
+- [Stay Invisible After a Data Leak (Technical)](/blog/stay-invisible-after-data-leak-technical)
