@@ -24,4 +24,9 @@ export const docSections = [
     description: 'Keycloak events through Kete and NATS',
     url: '/docs/events',
   },
+  {
+    title: 'Mail proxy',
+    description: 'Coming soon. A proxied email per connection, as the blog describes it.',
+    url: '/docs/mail-proxy',
+  },
 ] as const;
