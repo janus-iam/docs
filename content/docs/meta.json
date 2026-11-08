@@ -1,3 +1,3 @@
 {
-  "pages": ["(keycloak)", "identicon", "caas", "container", "events", "mail-proxy"]
+  "pages": ["(keycloak)", "identicon", "caas", "container", "events", "mail-proxy", "skills"]
 }
