@@ -1,4 +1,4 @@
-import { Blocks, BookOpen, Container, KeyRound, Mail, Radio, ScanFace } from 'lucide-react';
+import { Blocks, BookOpen, Container, House, KeyRound, Mail, Radio, ScanFace } from 'lucide-react';
 import type { BaseLayoutProps, LinkItemType } from 'fumadocs-ui/layouts/shared';
 import { docSections } from './doc-sections';
 import { appName, gitConfig } from './shared';
@@ -11,6 +11,7 @@ const sectionIcons = {
   Events: <Radio />,
   'Mail proxy': <Mail />,
   Skills: <BookOpen />,
+  Domus: <House />,
 } as const;
 
 export const sectionLinks: LinkItemType[] = [
