@@ -29,4 +29,9 @@ export const docSections = [
     description: 'Coming soon. A proxied email per connection, as the blog describes it.',
     url: '/docs/mail-proxy',
   },
+  {
+    title: 'Skills',
+    description: 'Agent skill SKILL.md, Apache-2.0, version 1.1.',
+    url: '/docs/skills',
+  },
 ] as const;

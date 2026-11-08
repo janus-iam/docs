@@ -1,0 +1,7 @@
+{
+  "title": "Skills",
+  "description": "The janus-iam-skill agent skill.",
+  "icon": "BookOpen",
+  "root": true,
+  "pages": ["index"]
+}
