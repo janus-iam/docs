@@ -1,0 +1,7 @@
+{
+  "title": "Domus",
+  "description": "Coming soon. Account portal scaffold.",
+  "icon": "House",
+  "root": true,
+  "pages": ["index"]
+}

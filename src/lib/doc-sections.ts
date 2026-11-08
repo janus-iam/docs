@@ -34,4 +34,9 @@ export const docSections = [
     description: 'Agent skill SKILL.md, Apache-2.0, version 1.1.',
     url: '/docs/skills',
   },
+  {
+    title: 'Domus',
+    description: 'Coming soon. Account portal. Early TypeScript scaffold, not wired to Keycloak.',
+    url: '/docs/domus',
+  },
 ] as const;
