@@ -39,4 +39,9 @@ export const docSections = [
     description: 'Coming soon. Account portal. Early TypeScript scaffold, not wired to Keycloak.',
     url: '/docs/domus',
   },
+  {
+    title: 'Media kit',
+    description: 'Two sample images: pieuvre.jpg and paresseux.png.',
+    url: '/docs/media-kit',
+  },
 ] as const;
