@@ -1,11 +1,6 @@
 export const docSections = [
   {
-    title: 'Keycloak',
-    description: 'The identity server Janus runs on',
-    url: '/docs',
-  },
-  {
-    title: 'Identicon',
+    title: 'Identicons',
     description: 'Deterministic SVG identicons',
     url: '/docs/identicon',
   },
@@ -30,7 +25,7 @@ export const docSections = [
     url: '/docs/mail-proxy',
   },
   {
-    title: 'Skills',
+    title: 'Janus IAM skill',
     description: 'Agent skill SKILL.md, Apache-2.0, version 1.1.',
     url: '/docs/skills',
   },

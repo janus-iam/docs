@@ -1,5 +1,5 @@
 {
-  "title": "Skills",
+  "title": "Janus IAM skill",
   "description": "The janus-iam-skill agent skill.",
   "icon": "BookOpen",
   "root": true,
