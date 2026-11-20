@@ -9,6 +9,16 @@ Janus is built on Keycloak and ships with three realms. We name them after figur
 
 Each realm is a strictly isolated space: a user exists in **one realm only**, with no identity shared across realms.
 
+Here is an overview of the three realms : 
+
+| Realm | Display name | Role |
+| --- | --- | --- |
+| `prod` | canens | Live users and services |
+| `dev` | proca | Development, away from production |
+| `ops` | carna | Operations accounts that run Janus |
+
+But why have we named them this way ?
+
 ## Realm `prod` — **canens**
 
 Named for **Canens**, the daughter in Janus’s household—production is where live users and services live.
