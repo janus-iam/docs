@@ -1,0 +1,22 @@
+---
+title: Overview
+description: Components of the Janus ecosystem and where each one is documented.
+---
+
+Janus is an identity platform built on Keycloak. The pieces below are the repositories and products that make up the public ecosystem. Keycloak itself is the underlying IdP — configuration lives in CaaS, and the runtime image lives in Container.
+
+## Components
+
+| Component | Description | Docs |
+| --- | --- | --- |
+| [Domus](/docs/domus) | Account portal (TypeScript monorepo). Early scaffold, not wired to Keycloak yet. | Coming soon |
+| Docs | This documentation site ([janus-iam/docs](https://github.com/janus-iam/docs)). | — |
+| [CaaS](/docs/caas) | OpenTofu configuration for Keycloak realms, a read-only master account, and public PKCE clients. | Available |
+| [Container](/docs/container) | The Keycloak image Janus runs, including the Kete listener and disabled features. | Available |
+| [Identicons](/docs/identicon) | Deterministic SVG identicons: Rust engine, WebAssembly bindings, and an HTTP API. | Available |
+| [Media kit](/docs/media-kit) | Sample brand images in [janus-iam/media-kit](https://github.com/janus-iam/media-kit). | Available |
+| [Janus IAM skill](/docs/skills) | Agent skill (`SKILL.md`) for questions about Janus IAM. | Available |
+| [Events](/docs/events) | Keycloak events via Kete into NATS JetStream, then ClickHouse or a Bun catcher ([nats-clickhouse-ingestion](https://github.com/janus-iam/nats-clickhouse-ingestion)). | Available |
+| [Mail proxy](/docs/mail-proxy) | Proxied email per connection, as described in the blog. | Coming soon |
+
+Governance notes on realms, disabled features, and data location live under [Governance](/governance).

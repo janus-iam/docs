@@ -1,0 +1,7 @@
+{
+  "title": "Overview",
+  "description": "Janus ecosystem components",
+  "icon": "Orbit",
+  "root": true,
+  "pages": ["index"]
+}

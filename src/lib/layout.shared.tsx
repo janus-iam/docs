@@ -1,16 +1,15 @@
-import { Blocks, BookOpen, Container, House, Images, KeyRound, Mail, Radio, ScanFace } from 'lucide-react';
+import { Blocks, BookOpen, Container, House, Images, Mail, Radio, ScanFace } from 'lucide-react';
 import type { BaseLayoutProps, LinkItemType } from 'fumadocs-ui/layouts/shared';
 import { docSections } from './doc-sections';
 import { appName, gitConfig } from './shared';
 
 const sectionIcons = {
-  Keycloak: <KeyRound />,
-  Identicon: <ScanFace />,
+  Identicons: <ScanFace />,
   CaaS: <Blocks />,
   Container: <Container />,
   Events: <Radio />,
   'Mail proxy': <Mail />,
-  Skills: <BookOpen />,
+  'Janus IAM skill': <BookOpen />,
   Domus: <House />,
   'Media kit': <Images />,
 } as const;

@@ -22,9 +22,8 @@ export default function HomePage() {
         <div className="mx-auto flex w-full max-w-(--fd-layout-width) flex-col gap-6 px-4 py-16 md:py-24">
           <h1 className="text-4xl font-semibold tracking-tight md:text-5xl">Janus</h1>
           <p className="max-w-2xl text-lg text-fd-muted-foreground">
-            Documentation, blog posts, and governance notes. Janus is built on Keycloak:
-            the server image, the OpenTofu configuration, identicons, and the event
-            pipeline.
+            Documentation, blog posts, and governance notes for the Janus ecosystem —
+            Domus, CaaS, Container, Identicons, Events, and more.
           </p>
           <div className="flex flex-wrap gap-3">
             <Link href="/docs" className={cn(buttonVariants())}>
@@ -42,17 +41,16 @@ export default function HomePage() {
           <div className="max-w-2xl">
             <h2 className="text-2xl font-semibold tracking-tight">Components</h2>
             <p className="mt-2 text-fd-muted-foreground">
-              Keycloak, identicons, configuration, the image, and events.
+              Repositories and products in the Janus ecosystem. Full list on the{' '}
+              <Link href="/docs" className="font-medium text-fd-primary">
+                documentation overview
+              </Link>
+              .
             </p>
           </div>
           <Cards>
             <Card
-              title="Keycloak"
-              href="/docs"
-              description="Three realms — prod (canens), dev (proca), and ops (carna). A user exists in one realm only."
-            />
-            <Card
-              title="Identicon"
+              title="Identicons"
               href="/docs/identicon"
               description="Deterministic SVG identicons: a Rust engine, WebAssembly bindings, and an HTTP API."
             />
@@ -70,6 +68,26 @@ export default function HomePage() {
               title="Events"
               href="/docs/events"
               description="Kete events into four NATS JetStream streams, then ClickHouse or a Bun catcher."
+            />
+            <Card
+              title="Janus IAM skill"
+              href="/docs/skills"
+              description="Agent skill SKILL.md for questions about Janus IAM."
+            />
+            <Card
+              title="Media kit"
+              href="/docs/media-kit"
+              description="Sample brand images in janus-iam/media-kit."
+            />
+            <Card
+              title="Domus"
+              href="/docs/domus"
+              description="Coming soon. Account portal scaffold, not wired to Keycloak yet."
+            />
+            <Card
+              title="Mail proxy"
+              href="/docs/mail-proxy"
+              description="Coming soon. Proxied email per connection, as the blog describes it."
             />
           </Cards>
         </div>
